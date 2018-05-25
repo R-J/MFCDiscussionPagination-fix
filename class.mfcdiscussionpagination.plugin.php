@@ -4,11 +4,11 @@
 $PluginInfo['MFCDiscussionPagination'] = array(
    'Name' => 'Front Page Discussions Pagination',
    'Description' => 'Creates pagelist navigation on items in Discussions view.',
-   'Version' => '1.03',
+   'Version' => '1.04',
    'Author' => "stwc",
    'AuthorEmail' => 'wonderchickenindustries@gmail.com',
    'AuthorUrl' => 'http://wonderchicken.com',
-   'RequiredApplications' => array('Vanilla' => '2.0.17'),
+   'RequiredApplications' => array('Vanilla' => '2.5'),
    'MobileFriendly' => TRUE
 );
 
@@ -35,6 +35,9 @@ class MFCDiscussionPaginationPlugin extends Gdn_Plugin {
 		$Sender->EventArguments['PagerType'] = 'Pager';
 		$Sender->FireEvent('BeforeBuildPager');
       $Sender->Pager = $PagerFactory->GetPager($Sender->EventArguments['PagerType'], $Sender);
+      $Sender->Pager->MoreCode = '';
+      $Sender->Pager->LessCode = '';
+      $Sender->Pager->CssClass = 'MiniPager';
       $Sender->Pager->ClientID = 'Pager';
       $Sender->Pager->Wrapper = '<span %1$s>%2$s</span>';
       $Sender->Pager->Configure(
