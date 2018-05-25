@@ -1,4 +1,4 @@
-<?php if (!defined('APPLICATION')) exit();
+<?php
 
 // Define the plugin:
 $PluginInfo['MFCDiscussionPagination'] = array(
@@ -12,13 +12,13 @@ $PluginInfo['MFCDiscussionPagination'] = array(
    'MobileFriendly' => TRUE
 );
 
-class MFCDiscussionPagination implements Gdn_IPlugin {
+class MFCDiscussionPaginationPlugin extends Gdn_Plugin {
 
    public function Base_Render_Before($Sender) {
       $Sender->AddCssFile('plugins/MFCDiscussionPagination/design/mfcdiscussionpagination.css');
    }
    
-   public function DiscussionsController_AfterDiscussionTitle_Handler(&$Sender) {
+   public function DiscussionsController_AfterDiscussionTitle_Handler($Sender) {
 		$Discussion = $Sender->EventArguments['Discussion'];
 		//$CommentsPerPage = C('Vanilla.Comments.PerPage');
 		// Actual number of comments, excluding the discussion itself
@@ -59,5 +59,3 @@ class MFCDiscussionPagination implements Gdn_IPlugin {
       //no setup needed
    }
 } 
-
-?>
