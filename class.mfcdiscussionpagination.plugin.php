@@ -38,7 +38,7 @@ class MFCDiscussionPaginationPlugin extends Gdn_Plugin {
       $Sender->Pager->MoreCode = '';
       $Sender->Pager->LessCode = '';
       $Sender->Pager->CssClass = 'MiniPager';
-      $Sender->Pager->ClientID = 'Pager';
+      $Sender->Pager->ClientID = 'Pager'.$Discussion->DiscussionID;
       $Sender->Pager->Wrapper = '<span %1$s>%2$s</span>';
       $Sender->Pager->Configure(
          $Sender->Offset,
